@@ -1,0 +1,7 @@
+name: RedCord
+version: ${project.version}
+main: com.github.drclass.redcord.RedCord
+api-version: 1.15
+load: STARTUP
+authors: [DrClass]
+description: A Minecraft to Discord relay
