@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ColorRoundingUtil {
+	//TODO: Add bias agaisnt grayscale colors
 	public static final Map<String, int[]> LEGACY_COLORS = Stream
 			.of(new AbstractMap.SimpleImmutableEntry<>("&0", new int[] { 0, 0, 0 }),
 					new AbstractMap.SimpleImmutableEntry<>("&1", new int[] { 0, 0, 170 }),
@@ -15,7 +16,7 @@ public class ColorRoundingUtil {
 					new AbstractMap.SimpleImmutableEntry<>("&5", new int[] { 170, 0, 170 }),
 					new AbstractMap.SimpleImmutableEntry<>("&6", new int[] { 255, 170, 0 }),
 					new AbstractMap.SimpleImmutableEntry<>("&7", new int[] { 170, 170, 170 }),
-					new AbstractMap.SimpleImmutableEntry<>("&8", new int[] { 85, 85, 85 }),
+					//new AbstractMap.SimpleImmutableEntry<>("&8", new int[] { 85, 85, 85 }),
 					new AbstractMap.SimpleImmutableEntry<>("&9", new int[] { 85, 85, 255 }),
 					new AbstractMap.SimpleImmutableEntry<>("&a", new int[] { 85, 255, 85 }),
 					new AbstractMap.SimpleImmutableEntry<>("&b", new int[] { 85, 255, 255 }),

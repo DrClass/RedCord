@@ -16,12 +16,15 @@ public class ChatListener extends ListenerAdapter {
 		if (event.getAuthor().isBot() || event.isWebhookMessage()) {
 			return;
 		}
-		String messageText = event.getMessage().getContentRaw();
-		if (messageText.length() > RedCord.config.minecraft.maxMessageLength) {
-			messageText = messageText.substring(0, RedCord.config.minecraft.maxMessageLength) + "...";
+		if (event.getGuild().getId().equals(RedCord.config.discord.serverID)
+				&& event.getChannel().getId().equals(RedCord.config.discord.channelID)) {
+			String messageText = event.getMessage().getContentDisplay();
+			if (messageText.length() > RedCord.config.minecraft.maxMessageLength && RedCord.config.minecraft.maxMessageLength != 0) {
+				messageText = messageText.substring(0, RedCord.config.minecraft.maxMessageLength) + "...";
+			}
+			MessageQueue.addToMinecraftQueue(new Message(MessageType.CHAT,
+					DiscordRoleUtils.getTopMostRole(event.getMember()), event.getAuthor().getName(),
+					event.getMember().getEffectiveName(), messageText, event.getMember().getColor()));
 		}
-		MessageQueue.addToMinecraftQueue(new Message(MessageType.CHAT,
-				DiscordRoleUtils.getTopMostRole(event.getMember()), event.getAuthor().getName(),
-				event.getMember().getEffectiveName(), messageText, event.getMember().getColor()));
 	}
 }
